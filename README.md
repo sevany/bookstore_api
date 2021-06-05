@@ -1,2 +1,6 @@
-Things to do:
+***LOCKDOWN PROGRAMMING PRACTICE
 
+Things to do:
+    
+    [ ] Create URL versioning
+    [ ] Authentication
