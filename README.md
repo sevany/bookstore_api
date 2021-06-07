@@ -3,4 +3,6 @@
 Things to do:
     
     [x] Create URL versioning
-    [ ] Authentication
+    [x] AuthenticatMion
+    [ ] Middleware
+    [ ] test swagger
