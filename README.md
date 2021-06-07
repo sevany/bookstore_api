@@ -2,5 +2,5 @@
 
 Things to do:
     
-    [ ] Create URL versioning
+    [x] Create URL versioning
     [ ] Authentication
