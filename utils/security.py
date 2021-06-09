@@ -14,6 +14,9 @@ from starlette.status import HTTP_401_UNAUTHORIZED
 import jwt
 import time
 # #password best if it comes with hash
+# wen need to encrypt password when we storing them in db
+##FIRST THINGS
+####################################################################################
 password_con = CryptContext(schemes=["bcrypt"])
 oauth_schema = OAuth2PasswordBearer(tokenUrl="/token")
 
@@ -26,22 +29,33 @@ jwt_usertest = {"username": "testing",
 fake_usertest = JWTUser(**jwt_usertest)
 # jwt_fake_db = [{}]
 
+
 def get_hashed_password(passwordnye):
     return password_con.hash(passwordnye)
 
+##ni nak make sure password original sama tak dgn hash password
 def verify_password(plain_password, hashed_password):
     try:
         return password_con.verify(plain_password, hashed_password)
     except Exception as e:
         return "AHHH COBA LAGI!"
 
+
 # print(get_hashed_password("aposajo"))
 # hashed = "$2b$12$pncsZ4BhvNUgbVGNLCPGXu8xw/2w2tbidOrx64WZwzvnj0gzJNDvG"
 
 # print(verify_password("mysecret", hashed))
 
+############################################################################################
+
+#SECOND THINGS
+#########################################################################################
+
 ##authenticate username and password to pass JWT to users token
+
+# this function means user send username ands pass in form URL form requests untuk dpt token
 #check if we have such user in db or not
+ 
 def authenticate_user(user:JWTUser):
     if fake_usertest.username == user.username:
         if verify_password(user.password, fake_usertest.password):
@@ -75,20 +89,20 @@ def check_token(token:str =Depends(oauth_schema)):
         expiration = payload.get("exp")
         if time.time() < expiration:
             if fake_usertest.username == username:
-                return last_checks(username, role)
+                return last_checks(role)
     except Exception as e:
         raise HTTPException(status_code=HTTP_401_UNAUTHORIZED)
+        # return False
 
+    # raise False
     raise HTTPException(status_code=HTTP_401_UNAUTHORIZED)
-
-
 
 def last_checks(role:str):
     if role == "admin":
         return True
 
     else: 
-        return HTTPException(status_code=HTTP_401_UNAUTHORIZED)
-        
+        # return False
+        raise HTTPException(status_code=HTTP_401_UNAUTHORIZED)
 
 # # print(get_hashed_password("aposajo"))
