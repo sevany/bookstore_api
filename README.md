@@ -6,3 +6,4 @@ Things to do:
     [x] AuthenticatMion
     [x] Middleware
     [ ] test swagger
+    [ ] add documentation in swagger
