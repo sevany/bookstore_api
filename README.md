@@ -4,5 +4,5 @@ Things to do:
     
     [x] Create URL versioning
     [x] AuthenticatMion
-    [ ] Middleware
+    [x] Middleware
     [ ] test swagger
