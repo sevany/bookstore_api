@@ -5,5 +5,7 @@ Things to do:
     [x] Create URL versioning
     [x] AuthenticatMion
     [x] Middleware
-    [ ] test swagger
-    [ ] add documentation in swagger
+    [x] test swagger
+    [x] add documentation in swagger
+    [ ] creating postgreSQL db with docker
+    [ ] connect endpoinds to db
